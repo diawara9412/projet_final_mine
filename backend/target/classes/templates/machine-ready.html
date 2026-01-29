@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre machine est prête</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .content {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+        .ready-box {
+            background: white;
+            border: 3px solid #28a745;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .ready-icon {
+            font-size: 48px;
+            color: #28a745;
+        }
+        .machine-info {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .montant {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 12px;
+        }
+        .info-list {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .info-list li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Bonne nouvelle !</h1>
+        <p>Votre machine est prête à être récupérée</p>
+    </div>
+    
+    <div class="content">
+        <p>Bonjour <strong th:text="${clientPrenom + ' ' + clientNom}">Client</strong>,</p>
+        
+        <div class="ready-box">
+            <div class="ready-icon">&#10004;</div>
+            <h2>Réparation terminée</h2>
+            <p>Votre machine est prête à être récupérée !</p>
+        </div>
+        
+        <div class="machine-info">
+            <strong>Machine :</strong> <span th:text="${machineMarque + ' ' + machineModele}">Marque Modèle</span>
+        </div>
+        
+        <div th:if="${montant != null}" class="montant">
+            Montant à régler : <span th:text="${montant + ' DH'}">0.00 DH</span>
+        </div>
+        
+        <div class="info-list">
+            <strong>Informations importantes :</strong>
+            <ul>
+                <li>Veuillez vous munir d'une pièce d'identité</li>
+                <li>Le règlement peut se faire en espèces ou par carte</li>
+                <li>Nos horaires d'ouverture : Lundi-Vendredi 9h-18h, Samedi 9h-13h</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Cet email a été envoyé automatiquement. Merci de ne pas y répondre.</p>
+        <p th:text="'© 2025 ' + ${appName} + ' - Tous droits réservés'"></p>
+    </div>
+</body>
+</html>
