@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+        # chemin vers ton dossier frontend
+      dockerfile: Dockerfile   # nom du Dockerfile
+    container_name: next-frontend
+    restart: always
+    env_file:
+      - .env        # chemin vers ton .env
+    ports:
+      - "3000:3000"
